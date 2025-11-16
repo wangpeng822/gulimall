@@ -16,7 +16,21 @@
 
 
     <dependencies>
-<!--        引入spring-cloud-alibaba依赖-->
+        <!--        引入nacos注册中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <!-- 显式指定版本号，根据实际需求选择合适的版本 -->
+            <version>2.2.7.RELEASE</version>
+        </dependency>
+
+        <!--        配置中心依赖-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <!--        引入spring-cloud-alibaba依赖-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -29,7 +43,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.14</version>
+            <version>3.5.5</version>
         </dependency>
 
         <dependency>
@@ -57,12 +71,17 @@
             <version>8.0.33</version>
         </dependency>
 
+        <!--        <dependency>-->
+        <!--            <groupId>javax.servlet</groupId>-->
+        <!--            <artifactId>servlet-api</artifactId>-->
+        <!--            <version>2.5</version>-->
+        <!--            &lt;!&ndash;            因为servlet-api是在tomcat中实现的，所以在打包时不需要包含在jar包中&ndash;&gt;-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <!--            因为servlet-api是在tomcat中实现的，所以在打包时不需要包含在jar包中-->
-            <scope>provided</scope>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
         </dependency>
     </dependencies>
 

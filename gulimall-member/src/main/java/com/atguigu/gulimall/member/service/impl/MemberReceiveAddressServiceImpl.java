@@ -8,9 +8,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.common.utils.PageUtils;
 import com.atguigu.common.utils.Query;
 
-import com.atguigu.gulimall.coupon.dao.MemberReceiveAddressDao;
-import com.atguigu.gulimall.coupon.entity.MemberReceiveAddressEntity;
-import com.atguigu.gulimall.coupon.service.MemberReceiveAddressService;
+import com.atguigu.gulimall.member.dao.MemberReceiveAddressDao;
+import com.atguigu.gulimall.member.entity.MemberReceiveAddressEntity;
+import com.atguigu.gulimall.member.service.MemberReceiveAddressService;
 
 
 @Service("memberReceiveAddressService")

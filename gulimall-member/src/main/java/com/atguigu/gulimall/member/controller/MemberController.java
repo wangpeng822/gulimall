@@ -3,7 +3,9 @@ package com.atguigu.gulimall.member.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.atguigu.gulimall.member.feign.CouponFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import com.atguigu.gulimall.member.entity.MemberEntity;
@@ -20,11 +22,24 @@ import com.atguigu.common.utils.R;
  * @email zhouxingxing822@gmail.com
  * @date 2025-11-16 01:42:04
  */
+@RefreshScope
 @RestController
 @RequestMapping("coupon/member")
 public class MemberController {
     @Autowired
     private MemberService memberService;
+    //引入远程调用接口
+    @Autowired
+    CouponFeignService couponFeignService;
+
+    @RequestMapping("/coupons")
+    public R test(){
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setNickname("张三");
+        R membercoupons = couponFeignService.membercoupons();
+        membercoupons.get("");
+        return R.ok().put("member",memberEntity).put("coupons",membercoupons.get("coupons"));
+    }
 
     /**
      * 列表

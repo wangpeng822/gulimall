@@ -8,9 +8,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.common.utils.PageUtils;
 import com.atguigu.common.utils.Query;
 
-import com.atguigu.gulimall.coupon.dao.GrowthChangeHistoryDao;
-import com.atguigu.gulimall.coupon.entity.GrowthChangeHistoryEntity;
-import com.atguigu.gulimall.coupon.service.GrowthChangeHistoryService;
+import com.atguigu.gulimall.member.dao.GrowthChangeHistoryDao;
+import com.atguigu.gulimall.member.entity.GrowthChangeHistoryEntity;
+import com.atguigu.gulimall.member.service.GrowthChangeHistoryService;
 
 
 @Service("growthChangeHistoryService")
