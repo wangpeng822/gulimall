@@ -1,9 +1,12 @@
 package com.atguigu.gulimall.product.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.atguigu.gulimall.product.entity.BrandEntity;
@@ -48,11 +51,27 @@ public class BrandController {
 
     /**
      * 保存
+     * @Valid表示这个字段需要校验
+     * BindingResult result 封装校验结果
      */
     @RequestMapping("/save")
-    public R save(@RequestBody BrandEntity brand){
-		brandService.save(brand);
-
+    public R save(@Valid @RequestBody BrandEntity brand /*,BindingResult result*/){
+        //result.hasErrors()是否有错
+//        if(result.hasErrors()){
+//            Map<String,String> map = new HashMap<>();
+//            //1.获取校验的错误结果
+//            result.getFieldErrors().forEach((item)->{
+//                //fieldError 获取到错误
+//                String defaultMessage = item.getDefaultMessage();
+//                //获取校验错误字段名
+//                String field = item.getField();
+//                map.put(field,defaultMessage);
+//            });
+//            return R.error(400,"提交数据不合法").put("data",map);
+//        }else{
+//            brandService.save(brand);
+//        }
+        brandService.save(brand);
         return R.ok();
     }
 
