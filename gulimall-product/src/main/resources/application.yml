@@ -6,9 +6,8 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   cloud:
     nacos:
-      config:
-        import-check:
-          enabled: false
+      discovery:
+        server-addr: 127.0.0.1:8848
 mybatis-plus:
   #  1).配置Mybatis-plus 映射文件位置
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -17,5 +16,13 @@ mybatis-plus:
     db-config:
       #       1).配置主键策略为自增
       id-type: auto
+      # 配置全局的逻辑删除
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 server:
   port: 10000
+#打印日志级别
+logging:
+  level:
+    com.atguigu.gulimall: debug
+
