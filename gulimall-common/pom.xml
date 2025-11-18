@@ -5,8 +5,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.7</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>3.5.7</version> <!-- Spring Boot 3.x 版本 -->
+        <relativePath/>
     </parent>
     <groupId>com.atguigu.gulimall</groupId>
     <artifactId>gulimall-common</artifactId>
@@ -14,70 +14,69 @@
     <name>gulimall-common</name>
     <description>每个微服务公共的模块</description>
 
+    <!-- 关键：版本管理中心，统一管理依赖版本 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Cloud Alibaba 版本管理（必须与 Spring Boot 3.x 兼容） -->
+            <!-- 注意：Spring Boot 3.x 需对应 Spring Cloud Alibaba 2022.x 及以上版本 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2023.0.1.0</version> <!-- 与 Spring Boot 3.5.7 兼容的版本 -->
+                <type>pom</type>
+                <scope>import</scope> <!-- 正确位置：仅在 dependencyManagement 中使用 import -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
-        <!--        引入nacos注册中心-->
+        <!-- nacos注册中心（无需写版本，由上面的 dependencyManagement 管理） -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <!-- 显式指定版本号，根据实际需求选择合适的版本 -->
-            <version>2.2.7.RELEASE</version>
         </dependency>
 
-        <!--        配置中心依赖-->
+        <!-- 配置中心依赖（同样无需写版本） -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
-        <!--        引入spring-cloud-alibaba依赖-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>2023.0.1.0</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-
-        <!--        mybatis-plus-->
+        <!-- mybatis-plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.5</version>
         </dependency>
 
+        <!-- lombok（父工程已管理版本，可省略version） -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+        <!-- httpcore -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>4.4.16</version>
         </dependency>
 
+        <!-- commons-lang -->
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
         </dependency>
 
-        <!--        导入数据库依赖-->
+        <!-- 数据库依赖 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>javax.servlet</groupId>-->
-        <!--            <artifactId>servlet-api</artifactId>-->
-        <!--            <version>2.5</version>-->
-        <!--            &lt;!&ndash;            因为servlet-api是在tomcat中实现的，所以在打包时不需要包含在jar包中&ndash;&gt;-->
-        <!--            <scope>provided</scope>-->
-        <!--        </dependency>-->
+        <!-- jakarta.persistence -->
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>

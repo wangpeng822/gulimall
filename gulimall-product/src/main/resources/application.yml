@@ -4,13 +4,18 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/gulimall?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    nacos:
+      config:
+        import-check:
+          enabled: false
 mybatis-plus:
-#  1).配置Mybatis-plus 映射文件位置
+  #  1).配置Mybatis-plus 映射文件位置
   mapper-locations: classpath*:/mapper/**/*.xml
-#  配置Mybatis-plus 全局主键策略
+  #  配置Mybatis-plus 全局主键策略
   global-config:
     db-config:
-#       1).配置主键策略为自增
+      #       1).配置主键策略为自增
       id-type: auto
 server:
   port: 10000
