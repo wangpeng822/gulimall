@@ -6,6 +6,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   cloud:
     nacos:
+      config:
+        import-check:
+          enabled: false #暂时禁用
       discovery:
         server-addr: 127.0.0.1:8848
 mybatis-plus:
@@ -25,4 +28,3 @@ server:
 logging:
   level:
     com.atguigu.gulimall: debug
-
